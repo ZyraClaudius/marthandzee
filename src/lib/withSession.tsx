@@ -8,8 +8,8 @@ declare module "iron-session" {
 }
 
 const sessionOptions = {
-  password: "cookie-password-must-be-at-least-32-character-long",
-  cookieName: "my-cookie-name",
+  password: process.env.COOKIE_PASSWORD as string,
+  cookieName: "marthandzee-session",
   // secure: true should be used in production (HTTPS) but can't be used in development (HTTP)
   cookieOptions: {
     secure: process.env.NODE_ENV === "production",
