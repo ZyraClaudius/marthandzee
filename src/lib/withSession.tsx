@@ -3,7 +3,8 @@ import { withIronSessionApiRoute, withIronSessionSsr } from "iron-session/next";
 
 declare module "iron-session" {
   interface IronSessionData {
-    user?: string;
+    user?: string
+    admin?: boolean
   }
 }
 
@@ -13,7 +14,7 @@ const sessionOptions = {
   // secure: true should be used in production (HTTPS) but can't be used in development (HTTP)
   cookieOptions: {
     secure: process.env.NODE_ENV === "production",
-    maxAge: 100
+    maxAge: undefined
   },
 };
 

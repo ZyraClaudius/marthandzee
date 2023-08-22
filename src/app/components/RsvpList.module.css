@@ -1,0 +1,19 @@
+.RsvpList{
+    margin: 0 2em;
+}
+
+.RsvpList li {
+    display: list-item;
+}
+
+.RsvpList li::marker {
+    font-size: 1em;
+}
+
+.RsvpListConfirmed li::marker {
+    content: '♡';
+}
+
+.RsvpListUnconfirmed li::marker {
+    content: '☠'
+}
