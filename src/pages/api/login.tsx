@@ -14,7 +14,8 @@ export default withSessionRoute(async function handler(req, res) {
       } else if (password === process.env.USER_PASSWORD) {
         auth = true
       } else {
-        res.status(500).send(`Something went wrong. Given: ${password}, stored: ${process.env.USER_PASSWORD}, ${process.env.ADMIN_PASSWORD}`)
+        console.log(`Debugging info: provided with ${password} should match ${process.env.ADMIN_PASSWORD} OR ${process.env.USER_PASSWORD}`)
+        res.status(500).send(`Something went wrong. Incorrect password`)
       }
       screenInput(name)
 
