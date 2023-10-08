@@ -1,4 +1,5 @@
 import Faqs from "~/app/components/Faqs";
+import "./globals.css";
 import { withSessionSsr } from "../lib/withSession";
 import NavBar from "~/app/components/NavBar";
 interface Props {

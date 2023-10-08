@@ -1,4 +1,5 @@
 import { withSessionSsr } from "../lib/withSession";
+import "./globals.css";
 import Image from "next/image";
 import NavBar from "~/app/components/NavBar";
 import photo1 from "~/app/components/photo1.jpg";
