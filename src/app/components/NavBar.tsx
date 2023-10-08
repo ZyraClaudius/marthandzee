@@ -13,6 +13,10 @@ export default function NavBar({ admin }: Props) {
       text: "FAQs",
       href: "/faqs",
     },
+    {
+      text: "Album",
+      href: "/album",
+    },
   ];
   if (admin) {
     links.push({

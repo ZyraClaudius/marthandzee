@@ -1,19 +1,30 @@
 .RsvpList{
     margin: 0 2em;
+    max-width: 90vw;
+    max-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    overflow-y: scroll;
 }
 
 .RsvpList li {
     display: list-item;
+    margin: 2em;
 }
 
-.RsvpList li::marker {
-    font-size: 1em;
+.RsvpListConfirmed>li::marker {
+    content: '♡  ';
 }
 
-.RsvpListConfirmed li::marker {
-    content: '♡';
+.RsvpListUnconfirmed>li::marker {
+    font-size: 1.8em;
+    content: '☠ '
 }
 
-.RsvpListUnconfirmed li::marker {
-    content: '☠'
+@media only screen and (orientation: portrait) {
+    .RsvpList {
+        flex-wrap: nowrap;
+        flex-direction: column;
+    }    
 }

@@ -1,0 +1,19 @@
+.itinerary {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.itineraryList {
+    display: flex;
+    overflow-x: scroll;
+    justify-content: flex-start;
+    width: 90vw;
+}
+
+@media screen and (orientation: portrait) {
+    .itineraryList {
+        flex-direction: column;
+        align-items: center;
+    }
+}

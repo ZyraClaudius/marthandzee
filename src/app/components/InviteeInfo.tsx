@@ -1,9 +1,10 @@
 import RsvpList from "./RsvpList";
 import styles from "./InviteeInfo.module.css";
 import { useEffect, useState } from "react";
+import { WeddingEvent } from "~/types/event";
 
 interface Props {
-  invitees: Array<{ id: number; name: string; rsvp: boolean }>;
+  invitees: Array<invitee>;
   refresh: () => void;
 }
 
@@ -11,6 +12,7 @@ type invitee = {
   id: number;
   name: string;
   rsvp: boolean;
+  events: Array<WeddingEvent>;
 };
 
 export default function InviteeInfo({ invitees, refresh }: Props) {
@@ -46,7 +48,7 @@ export default function InviteeInfo({ invitees, refresh }: Props) {
     jsxArray.push(
       <div key="confirmed">
         <p>The following {confirmed.length} people have RSVP&apos;d:</p>
-        <RsvpList names={confirmed.map((invitee) => invitee.name)} confirmed />
+        <RsvpList people={confirmed} confirmed />
       </div>
     );
   }
@@ -55,7 +57,7 @@ export default function InviteeInfo({ invitees, refresh }: Props) {
       <div key="unconfirmed">
         <p>The following {unconfirmed.length} people have not RSVP&apos;d:</p>
         <RsvpList
-          names={unconfirmed.map((invitee) => invitee.name)}
+          people={unconfirmed}
           confirmed={false}
         />
       </div>

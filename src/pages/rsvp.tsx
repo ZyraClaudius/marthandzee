@@ -32,7 +32,7 @@ export default function RSVP({ user, admin }: Props) {
   }
 
   async function Rsvp(status: boolean) {
-    setLoaded(false)
+    setLoaded(false);
     const options = {
       method: "POST",
       headers: {
@@ -43,42 +43,40 @@ export default function RSVP({ user, admin }: Props) {
     const response = await fetch(`/api/userRsvpStatus?user=${user}`, options);
     const responseData = await response.json();
     console.log(responseData);
-    fetchRsvp()
+    fetchRsvp();
   }
+
+  const rsvpStatus = rsvp ? (
+    <div>
+      <p>{user}, you have RSVP&apos;d</p>
+      <button
+        onClick={() => {
+          Rsvp(false);
+        }}
+      >
+        Click here to cancel
+      </button>
+      <p>Please note the above button will set your status to NOT attending</p>
+    </div>
+  ) : (
+    <div>
+      <p>{user}, you haven&apos;t RSVP&apos;d</p>
+      <button
+        onClick={() => {
+          Rsvp(true);
+        }}
+      >
+        Click here to RSVP
+      </button>
+      <p>Please note, the above button will set your status to attending</p>
+    </div>
+  );
 
   return (
     <div>
       <NavBar admin={admin} />
       {loaded ? (
-        rsvp ? (
-          <div>
-            <p>{user}, you have RSVP&apos;d</p>
-            <button
-              onClick={() => {
-                Rsvp(false);
-              }}
-            >
-              Click here to cancel
-            </button>
-            <p>
-              Please note the above button will set your status to NOT attending
-            </p>
-          </div>
-        ) : (
-          <div>
-            <p>{user}, you haven&apos;t RSVP&apos;d</p>
-            <button
-              onClick={() => {
-                Rsvp(true);
-              }}
-            >
-              Click here to RSVP
-            </button>
-            <p>
-              Please note, the above button will set your status to attending
-            </p>
-          </div>
-        )
+        rsvpStatus
       ) : (
         <div>
           <p>Please wait while we check your RSVP status</p>

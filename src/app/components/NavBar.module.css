@@ -6,7 +6,7 @@
 .NavBar::after{
     content: '';
     height: 2px;
-    margin: 4px;
+    margin: 4px auto;
     width: 90vw;
     background: #005C46;
     display: block;

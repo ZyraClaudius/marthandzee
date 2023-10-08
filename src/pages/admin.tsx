@@ -5,6 +5,10 @@ import "./globals.css";
 import { useEffect, useState } from "react";
 import InviteeInfo from "~/app/components/InviteeInfo";
 import InviteSomeone from "~/app/components/InviteSomeone";
+import User from "~/app/components/User";
+import Itinerary from "~/app/components/Itinerary";
+import { WeddingGuest } from "~/types/weddingGuest";
+import { WeddingEvent } from "~/types/event";
 
 interface Props {
   user: string;
@@ -13,13 +17,20 @@ interface Props {
 
 export default function Admin({ user, admin }: Props) {
   const [loaded, setLoaded] = useState(false);
-  const [invitees, setInvitees] = useState([] as Array<{id: number, name: string, rsvp: boolean}>);
+  const [invitees, setInvitees] = useState(
+    [] as Array<{
+      id: number;
+      name: string;
+      rsvp: boolean;
+      events: Array<WeddingEvent>;
+    }>
+  );
   useEffect(() => {
     fetchInvitees();
-  }, [user]);
+  }, []);
 
   async function fetchInvitees() {
-    setLoaded(false)
+    setLoaded(false);
     const options = {
       method: "GET",
       headers: {
@@ -36,10 +47,23 @@ export default function Admin({ user, admin }: Props) {
   return (
     <div>
       <NavBar admin={admin} />
-      <div className="page">
-      {loaded ? <InviteeInfo invitees={invitees} refresh={fetchInvitees}/> : <p>Please wait while invitee information is retreived</p>}
-      <InviteSomeone refresh={fetchInvitees}/>
-      </div>
+      <main>
+        <User user={user} />
+        <div className="page">
+          {loaded ? (
+            <InviteeInfo invitees={invitees} refresh={fetchInvitees} />
+          ) : (
+            <p>Please wait while invitee information is retreived</p>
+          )}
+          <InviteSomeone refresh={fetchInvitees} />
+          <Itinerary
+            user={user}
+            admin={true}
+            invitees={invitees}
+            refreshRsvp={fetchInvitees}
+          />
+        </div>
+      </main>
     </div>
   );
 }

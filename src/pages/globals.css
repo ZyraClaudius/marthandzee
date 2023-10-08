@@ -1,9 +1,54 @@
 * {
   margin: 0;
   padding: 0;
-  background-color: #20B2AA;
+  background-color: #fdf6ed;
 }
 
-div {
-  margin: 10px;
+form {
+  margin: 20px;
+}
+
+input {
+  margin-bottom: 10px;
+  margin-left: 5px;
+  padding: 2px;
+  border: 1px solid #005c46;
+  color: #005c46;
+}
+
+body {
+  color: #005c46;
+}
+
+main {
+  margin: 20px 0;
+}
+
+button {
+  padding: 3px;
+  border-radius: 5px;
+  border: 1px solid #005c46;
+  color: #005c46;
+}
+
+button:hover {
+  background-color: #005c46;
+  color: #fdf6ed;
+  cursor: pointer;
+}
+
+p, a {
+  background-color: rgba(0,0,0,0);
+}
+
+.photo {
+  max-width: 100vw;
+  height: fit-content;
+  margin: 10px auto;
+}
+
+.gallery {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
