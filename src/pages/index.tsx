@@ -37,6 +37,7 @@ export default function Home({ user, admin }: Props) {
               height="450"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
+              style={{maxWidth: '90vw'}}
             ></iframe>
           </div>
         </main>
